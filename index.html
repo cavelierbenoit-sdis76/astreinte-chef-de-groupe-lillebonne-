@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ASTREINTE SDIS 76</title>
+<title>ASTREINTE SDIS 76 V3</title>
 
 <style>
 
@@ -30,8 +30,12 @@ color:white;
 border:none;
 padding:10px;
 margin-right:5px;
-cursor:pointer;
 border-radius:5px;
+cursor:pointer;
+}
+
+nav button:hover{
+background:#c1121f;
 }
 
 .container{
@@ -49,8 +53,22 @@ display:block;
 .card{
 background:white;
 padding:20px;
-border-radius:10px;
 margin-bottom:20px;
+border-radius:10px;
+box-shadow:0 2px 5px rgba(0,0,0,.1);
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+.stat{
+background:white;
+padding:20px;
+text-align:center;
+border-radius:10px;
 box-shadow:0 2px 5px rgba(0,0,0,.1);
 }
 
@@ -63,14 +81,48 @@ gap:5px;
 .day{
 background:white;
 border:1px solid #ddd;
-padding:10px;
-height:80px;
-cursor:pointer;
 border-radius:5px;
+min-height:90px;
+padding:5px;
+font-size:14px;
+cursor:pointer;
+}
+
+.day:hover{
+background:#e3f2fd;
 }
 
 .ferie{
 background:#ffe082;
+}
+
+.dayname{
+background:#c1121f;
+color:white;
+padding:10px;
+text-align:center;
+font-weight:bold;
+}
+
+.affect{
+font-size:11px;
+margin-top:5px;
+color:#c1121f;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:8px;
+}
+
+th{
+background:#c1121f;
+color:white;
 }
 
 </style>
@@ -80,28 +132,69 @@ background:#ffe082;
 <body>
 
 <header>
+
 <h1>🚒 ASTREINTE SDIS 76</h1>
+
 <p>Planification Chef de Groupe Lillebonne 2027</p>
+
 </header>
 
 <nav>
-<button onclick="showPage('dashboard')">🏠 Tableau de bord</button>
-<button onclick="showPage('agents')">👨‍🚒 Agents</button>
-<button onclick="showPage('planning')">📅 Planning</button>
-<button onclick="showPage('stats')">📊 Statistiques</button>
+
+<button onclick="showPage('dashboard')">
+🏠 Tableau de bord
+</button>
+
+<button onclick="showPage('agents')">
+👨‍🚒 Agents
+</button>
+
+<button onclick="showPage('planning')">
+📅 Planning
+</button>
+
+<button onclick="showPage('stats')">
+📊 Statistiques
+</button>
+
 </nav>
 
 <div class="container">
 
 <div id="dashboard" class="page active">
 
+<div class="stats">
+
+<div class="stat">
+<h3>Agents</h3>
+<h2>11</h2>
+</div>
+
+<div class="stat">
+<h3>Profils 7 semaines</h3>
+<h2>3</h2>
+</div>
+
+<div class="stat">
+<h3>Profil 4 semaines</h3>
+<h2>1</h2>
+</div>
+
+<div class="stat">
+<h3>Nuits/WE/Fériés</h3>
+<h2>7</h2>
+</div>
+
+</div>
+
 <div class="card">
-<h2>Tableau de bord</h2>
+
+<h2>Organisation</h2>
 
 <ul>
 <li>3 agents minimum 7 semaines</li>
 <li>1 agent minimum 4 semaines</li>
-<li>7 agents nuits / week-end / fériés</li>
+<li>7 agents dédiés nuits / week-end / fériés</li>
 </ul>
 
 </div>
@@ -112,20 +205,28 @@ background:#ffe082;
 
 <div class="card">
 
-<h2>Agents</h2>
+<h2>Liste des agents</h2>
 
-<p>Agent 1 - Min 7 semaines</p>
-<p>Agent 2 - Min 7 semaines</p>
-<p>Agent 3 - Min 7 semaines</p>
-<p>Agent 4 - Min 4 semaines</p>
+<table>
 
-<p>Agent 5 - Nuit / WE / Férié</p>
-<p>Agent 6 - Nuit / WE / Férié</p>
-<p>Agent 7 - Nuit / WE / Férié</p>
-<p>Agent 8 - Nuit / WE / Férié</p>
-<p>Agent 9 - Nuit / WE / Férié</p>
-<p>Agent 10 - Nuit / WE / Férié</p>
-<p>Agent 11 - Nuit / WE / Férié</p>
+<tr>
+<th>Agent</th>
+<th>Profil</th>
+</tr>
+
+<tr><td>Agent 1</td><td>Minimum 7 semaines</td></tr>
+<tr><td>Agent 2</td><td>Minimum 7 semaines</td></tr>
+<tr><td>Agent 3</td><td>Minimum 7 semaines</td></tr>
+<tr><td>Agent 4</td><td>Minimum 4 semaines</td></tr>
+<tr><td>Agent 5</td><td>Nuit / WE / Férié</td></tr>
+<tr><td>Agent 6</td><td>Nuit / WE / Férié</td></tr>
+<tr><td>Agent 7</td><td>Nuit / WE / Férié</td></tr>
+<tr><td>Agent 8</td><td>Nuit / WE / Férié</td></tr>
+<tr><td>Agent 9</td><td>Nuit / WE / Férié</td></tr>
+<tr><td>Agent 10</td><td>Nuit / WE / Férié</td></tr>
+<tr><td>Agent 11</td><td>Nuit / WE / Férié</td></tr>
+
+</table>
 
 </div>
 
@@ -139,29 +240,46 @@ background:#ffe082;
 
 <div class="calendar">
 
-<div>Lun</div>
-<div>Mar</div>
-<div>Mer</div>
-<div>Jeu</div>
-<div>Ven</div>
-<div>Sam</div>
-<div>Dim</div>
+<div class="dayname">Lun</div>
+<div class="dayname">Mar</div>
+<div class="dayname">Mer</div>
+<div class="dayname">Jeu</div>
+<div class="dayname">Ven</div>
+<div class="dayname">Sam</div>
+<div class="dayname">Dim</div>
 
 <div></div>
 <div></div>
 <div></div>
 <div></div>
 
-<div class="day ferie" onclick="affecter('01/01/2027')">
-1 🎉
+<div id="j1" class="day ferie" onclick="affecter('01/01/2027','j1')">
+<b>1</b><br>🎉
 </div>
 
-<div class="day" onclick="affecter('02/01/2027')">2</div>
-<div class="day" onclick="affecter('03/01/2027')">3</div>
-<div class="day" onclick="affecter('04/01/2027')">4</div>
-<div class="day" onclick="affecter('05/01/2027')">5</div>
-<div class="day" onclick="affecter('06/01/2027')">6</div>
-<div class="day" onclick="affecter('07/01/2027')">7</div>
+<div id="j2" class="day" onclick="affecter('02/01/2027','j2')">
+<b>2</b>
+</div>
+
+<div id="j3" class="day" onclick="affecter('03/01/2027','j3')">
+<b>3</b>
+</div>
+
+<div id="j4" class="day" onclick="affecter('04/01/2027','j4')">
+<b>4</b>
+</div>
+
+<div id="j5" class="day" onclick="affecter('05/01/2027','j5')">
+<b>5</b>
+</div>
+
+<div id="j6" class="day" onclick="affecter('06/01/2027','j6')">
+<b>6</b>
+</div>
+
+<div id="j7" class="day" onclick="affecter('07/01/2027','j7')">
+<b>7</b>
+</div>
 
 </div>
 
@@ -175,7 +293,9 @@ background:#ffe082;
 
 <h2>📊 Statistiques</h2>
 
-<p>Aucune statistique enregistrée.</p>
+<p id="nbAffect">
+Aucune affectation enregistrée.
+</p>
 
 </div>
 
@@ -185,33 +305,76 @@ background:#ffe082;
 
 <script>
 
+const affectations =
+JSON.parse(
+localStorage.getItem("astreintes")
+) || {};
+
 function showPage(page){
 
-document.querySelectorAll('.page').forEach(function(p){
-p.classList.remove('active');
+document
+.querySelectorAll(".page")
+.forEach(p=>{
+p.classList.remove("active");
 });
 
-document.getElementById(page).classList.add('active');
+document
+.getElementById(page)
+.classList.add("active");
 
 }
 
-function affecter(date){
+function affecter(date,id){
 
-let agent = prompt(
-"Affectation du " + date +
-"\nNom de l'agent :"
+const agent = prompt(
+"Agent ?\n\nExemple : Agent 1"
 );
 
-if(agent){
+if(!agent){
+return;
+}
 
-alert(
-"Astreinte enregistrée pour : " +
-agent
+const type = prompt(
+"Type ?\n\nNuit\nWeek-end\nJour férié\nSemaine complète\nPersonnalisée"
 );
 
+if(!type){
+return;
 }
 
+affectations[date]={
+agent:agent,
+type:type
+};
+
+localStorage.setItem(
+"astreintes",
+JSON.stringify(affectations)
+);
+
+document.getElementById(id).innerHTML=
+"<b>"+date.split('/')[0]+"</b><div class='affect'>"+
+agent+
+"<br>"+
+type+
+"</div>";
+
+majStats();
+
 }
+
+function majStats(){
+
+const nb =
+Object.keys(affectations).length;
+
+document.getElementById("nbAffect")
+.innerHTML =
+"Affectations enregistrées : <b>"+nb+"</b>";
+
+}
+
+majStats();
 
 </script>
 
