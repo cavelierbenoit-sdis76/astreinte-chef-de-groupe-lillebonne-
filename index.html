@@ -1,15 +1,228 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>ASTREINTE SDIS 76</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f4f6f9;
+}
+
+header{
+background:#c1121f;
+color:white;
+padding:20px;
+}
+
+nav{
+background:#222;
+padding:10px;
+}
+
+nav button{
+background:#444;
+color:white;
+border:none;
+padding:10px 15px;
+margin-right:5px;
+border-radius:5px;
+cursor:pointer;
+}
+
+nav button:hover{
+background:#c1121f;
+}
+
+.container{
+padding:20px;
+}
+
+.section{
+display:none;
+}
+
+.active{
+display:block;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:10px;
+margin-bottom:20px;
+box-shadow:0 2px 5px rgba(0,0,0,.1);
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+}
+
+.stat{
+background:#fff;
+padding:20px;
+border-radius:10px;
+text-align:center;
+box-shadow:0 2px 5px rgba(0,0,0,.1);
+}
+
+.agent{
+padding:10px;
+border:1px solid #ddd;
+margin-bottom:5px;
+border-radius:5px;
+}
+
+</style>
+
 </head>
 
 <body>
 
+<header>
+
 <h1>🚒 ASTREINTE SDIS 76</h1>
 
-<p>Le site fonctionne correctement.</p>
+<p>Planification Chef de Groupe Lillebonne 2027</p>
+
+</header>
+
+<nav>
+
+<button onclick="showPage('dashboard')">
+🏠 Tableau de bord
+</button>
+
+<button onclick="showPage('agents')">
+👨‍🚒 Agents
+</button>
+
+<button onclick="showPage('planning')">
+📅 Planning
+</button>
+
+<button onclick="showPage('stats')">
+📊 Statistiques
+</button>
+
+</nav>
+
+<div class="container">
+
+<div id="dashboard" class="section active">
+
+<div class="stats">
+
+<div class="stat">
+<h3>Agents</h3>
+<h2>11</h2>
+</div>
+
+<div class="stat">
+<h3>Profil 7 semaines</h3>
+<h2>3</h2>
+</div>
+
+<div class="stat">
+<h3>Profil 4 semaines</h3>
+<h2>1</h2>
+</div>
+
+<div class="stat">
+<h3>Nuits / WE / Fériés</h3>
+<h2>7</h2>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Organisation</h2>
+
+<ul>
+<li>3 agents minimum 7 semaines complètes</li>
+<li>1 agent minimum 4 semaines complètes</li>
+<li>7 agents nuits, week-ends et jours fériés</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="agents" class="section">
+
+<div class="card">
+
+<h2>Agents</h2>
+
+<div class="agent">Agent 1 - Minimum 7 semaines</div>
+<div class="agent">Agent 2 - Minimum 7 semaines</div>
+<div class="agent">Agent 3 - Minimum 7 semaines</div>
+
+<div class="agent">Agent 4 - Minimum 4 semaines</div>
+
+<div class="agent">Agent 5 - Nuit / WE / Férié</div>
+<div class="agent">Agent 6 - Nuit / WE / Férié</div>
+<div class="agent">Agent 7 - Nuit / WE / Férié</div>
+<div class="agent">Agent 8 - Nuit / WE / Férié</div>
+<div class="agent">Agent 9 - Nuit / WE / Férié</div>
+<div class="agent">Agent 10 - Nuit / WE / Férié</div>
+<div class="agent">Agent 11 - Nuit / WE / Férié</div>
+
+</div>
+
+</div>
+
+<div id="planning" class="section">
+
+<div class="card">
+
+<h2>Planning</h2>
+
+<p>Calendrier interactif à venir en V2.2</p>
+
+</div>
+
+</div>
+
+<div id="stats" class="section">
+
+<div class="card">
+
+<h2>Statistiques</h2>
+
+<p>Aucune donnée enregistrée</p>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function showPage(page){
+
+document
+.querySelectorAll('.section')
+.forEach(section => {
+section.classList.remove('active');
+});
+
+document
+.getElementById(page)
+.classList.add('active');
+
+}
+
+</script>
 
 </body>
 </html>
