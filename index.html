@@ -1,132 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>ASTREINTE SDIS 76 V4</title>
+<title>ASTREINTE SDIS 76 V5</title>
 
-<style>
+style.css
 
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f4f6f9;
-}
-
-header{
-background:#c1121f;
-color:white;
-padding:20px;
-}
-
-nav{
-background:#222;
-padding:10px;
-}
-
-nav button{
-background:#444;
-color:white;
-border:none;
-padding:10px 15px;
-margin-right:5px;
-cursor:pointer;
-border-radius:5px;
-}
-
-nav button:hover{
-background:#c1121f;
-}
-
-.container{
-padding:20px;
-}
-
-.page{
-display:none;
-}
-
-.active{
-display:block;
-}
-
-.card{
-background:white;
-padding:20px;
-margin-bottom:20px;
-border-radius:10px;
-box-shadow:0 2px 5px rgba(0,0,0,.15);
-}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-}
-
-.stat{
-background:white;
-padding:20px;
-text-align:center;
-border-radius:10px;
-box-shadow:0 2px 5px rgba(0,0,0,.15);
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-}
-
-th,td{
-border:1px solid #ddd;
-padding:8px;
-}
-
-th{
-background:#c1121f;
-color:white;
-}
-
-label{
-display:block;
-margin-top:10px;
-font-weight:bold;
-}
-
-input,
-select,
-textarea{
-width:100%;
-padding:8px;
-box-sizing:border-box;
-margin-top:5px;
-}
-
-button.save{
-background:#c1121f;
-color:white;
-border:none;
-padding:10px 20px;
-margin-top:15px;
-cursor:pointer;
-}
-
-.affectation{
-background:#f7f7f7;
-padding:10px;
-margin-top:10px;
-border-left:4px solid #c1121f;
-}
-
-</style>
 </head>
 
 <body>
 
 <header>
 <h1>🚒 ASTREINTE SDIS 76</h1>
-<p>Chef de Groupe Lillebonne - Planification 2027</p>
+<p>Planification Chef de Groupe Lillebonne 2027</p>
 </header>
 
 <nav>
@@ -139,8 +29,8 @@ border-left:4px solid #c1121f;
 👨‍🚒 Agents
 </button>
 
-<button onclick="showPage('astreintes')">
-📅 Astreintes
+<button onclick="showPage('planning')">
+📅 Planning
 </button>
 
 <button onclick="showPage('stats')">
@@ -151,97 +41,114 @@ border-left:4px solid #c1121f;
 
 <div class="container">
 
-<!-- DASHBOARD -->
-
 <div id="dashboard" class="page active">
+
+<div class="card">
+
+<h2>Tableau de bord</h2>
 
 <div class="stats">
 
 <div class="stat">
 <h3>Agents</h3>
-<h2>11</h2>
+<p>11</p>
 </div>
 
 <div class="stat">
-<h3>Profils 7 sem.</h3>
-<h2>3</h2>
+<h3>Min 7 semaines</h3>
+<p>3</p>
 </div>
 
 <div class="stat">
-<h3>Profil 4 sem.</h3>
-<h2>1</h2>
+<h3>Min 4 semaines</h3>
+<p>1</p>
 </div>
 
 <div class="stat">
 <h3>Nuits / WE</h3>
-<h2>7</h2>
+<p>7</p>
 </div>
 
 </div>
 
 </div>
 
-<!-- AGENTS -->
+</div>
 
 <div id="agents" class="page">
 
 <div class="card">
 
-<h2>Liste des agents</h2>
+<h2>Gestion des agents</h2>
 
-<table>
-
-<tr>
-<th>Agent</th>
-<th>Profil</th>
-</tr>
-
-<tr><td>Agent 1</td><td>Minimum 7 semaines</td></tr>
-<tr><td>Agent 2</td><td>Minimum 7 semaines</td></tr>
-<tr><td>Agent 3</td><td>Minimum 7 semaines</td></tr>
-<tr><td>Agent 4</td><td>Minimum 4 semaines</td></tr>
-
-<tr><td>Agent 5</td><td>Nuit / Week-end / Férié</td></tr>
-<tr><td>Agent 6</td><td>Nuit / Week-end / Férié</td></tr>
-<tr><td>Agent 7</td><td>Nuit / Week-end / Férié</td></tr>
-<tr><td>Agent 8</td><td>Nuit / Week-end / Férié</td></tr>
-<tr><td>Agent 9</td><td>Nuit / Week-end / Férié</td></tr>
-<tr><td>Agent 10</td><td>Nuit / Week-end / Férié</td></tr>
-<tr><td>Agent 11</td><td>Nuit / Week-end / Férié</td></tr>
-
-</table>
+<div id="listeAgents"></div>
 
 </div>
 
 </div>
 
-<!-- ASTREINTE -->
-
-<div id="astreintes" class="page">
+<div id="planning" class="page">
 
 <div class="card">
 
-<h2>Nouvelle affectation</h2>
+<h2>Calendrier Janvier 2027</h2>
+
+<div class="calendar">
+
+<div class="dayname">Lun</div>
+<div class="dayname">Mar</div>
+<div class="dayname">Mer</div>
+<div class="dayname">Jeu</div>
+<div class="dayname">Ven</div>
+<div class="dayname">Sam</div>
+<div class="dayname">Dim</div>
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+<div class="day ferie" onclick="openForm('2027-01-01')">
+1 🎉
+</div>
+
+<div class="day" onclick="openForm('2027-01-02')">
+2
+</div>
+
+<div class="day" onclick="openForm('2027-01-03')">
+3
+</div>
+
+<div class="day" onclick="openForm('2027-01-04')">
+4
+</div>
+
+<div class="day" onclick="openForm('2027-01-05')">
+5
+</div>
+
+<div class="day" onclick="openForm('2027-01-06')">
+6
+</div>
+
+<div class="day" onclick="openForm('2027-01-07')">
+7
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Nouvelle astreinte</h2>
 
 <label>Agent</label>
 
-<select id="agent">
+<select id="agent"></select>
 
-<option>Agent 1</option>
-<option>Agent 2</option>
-<option>Agent 3</option>
-<option>Agent 4</option>
-<option>Agent 5</option>
-<option>Agent 6</option>
-<option>Agent 7</option>
-<option>Agent 8</option>
-<option>Agent 9</option>
-<option>Agent 10</option>
-<option>Agent 11</option>
-
-</select>
-
-<label>Type d'astreinte</label>
+<label>Type</label>
 
 <select id="type" onchange="majType()">
 
@@ -254,26 +161,30 @@ border-left:4px solid #c1121f;
 </select>
 
 <label>Date début</label>
+
 <input type="date" id="dateDebut">
 
 <label>Date fin</label>
+
 <input type="date" id="dateFin">
 
-<div id="blocHoraire" style="display:none;">
+<div id="blocHoraire">
 
 <label>Heure début</label>
+
 <input type="time" id="heureDebut">
 
 <label>Heure fin</label>
+
 <input type="time" id="heureFin">
 
 </div>
 
 <label>Commentaire</label>
 
-<textarea id="commentaire" rows="4"></textarea>
+<textarea id="commentaire"></textarea>
 
-<button class="save" onclick="enregistrer()">
+<button onclick="saveAstreinte()">
 Enregistrer
 </button>
 
@@ -281,19 +192,13 @@ Enregistrer
 
 <div class="card">
 
-<h2>Affectations enregistrées</h2>
+<h2>Affectations</h2>
 
-<div id="listeAffectations">
-
-Aucune affectation.
+<div id="affectations"></div>
 
 </div>
 
 </div>
-
-</div>
-
-<!-- STATS -->
 
 <div id="stats" class="page">
 
@@ -301,11 +206,7 @@ Aucune affectation.
 
 <h2>Statistiques</h2>
 
-<p id="statNb">
-
-0 affectation enregistrée
-
-</p>
+<div id="statsContent"></div>
 
 </div>
 
@@ -313,50 +214,8 @@ Aucune affectation.
 
 </div>
 
-<script>
+app.jsscript>
 
-function showPage(page){
+</body>
 
-document
-.querySelectorAll(".page")
-.forEach(function(p){
-
-p.classList.remove("active");
-
-});
-
-document
-.getElementById(page)
-.classList.add("active");
-
-}
-
-function majType(){
-
-let type =
-document.getElementById("type").value;
-
-let bloc =
-document.getElementById("blocHoraire");
-
-if(type==="Personnalisée"){
-
-bloc.style.display="block";
-
-}else{
-
-bloc.style.display="none";
-
-}
-
-}
-
-let affectations =
-JSON.parse(
-localStorage.getItem("astreintes")
-) || [];
-
-function enregistrer(){
-
-const a={
-
+</html>
