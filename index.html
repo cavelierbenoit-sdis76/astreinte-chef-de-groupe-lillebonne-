@@ -1,301 +1,99 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ASTREINTE SDIS 76 V3</title>
-
-<style>
-
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f4f6f9;
-}
-
-header{
-background:#c1121f;
-color:white;
-padding:20px;
-}
-
-nav{
-background:#222;
-padding:10px;
-}
-
-nav button{
-background:#444;
-color:white;
-border:none;
-padding:10px;
-margin-right:5px;
-border-radius:5px;
-cursor:pointer;
-}
-
-nav button:hover{
-background:#c1121f;
-}
-
-.container{
-padding:20px;
-}
-
-.page{
-display:none;
-}
-
-.active{
-display:block;
-}
-
-.card{
-background:white;
-padding:20px;
-margin-bottom:20px;
-border-radius:10px;
-box-shadow:0 2px 5px rgba(0,0,0,.1);
-}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
-}
-
-.stat{
-background:white;
-padding:20px;
-text-align:center;
-border-radius:10px;
-box-shadow:0 2px 5px rgba(0,0,0,.1);
-}
-
-.calendar{
-display:grid;
-grid-template-columns:repeat(7,1fr);
-gap:5px;
-}
-
-.day{
-background:white;
-border:1px solid #ddd;
-border-radius:5px;
-min-height:90px;
-padding:5px;
-font-size:14px;
-cursor:pointer;
-}
-
-.day:hover{
-background:#e3f2fd;
-}
-
-.ferie{
-background:#ffe082;
-}
-
-.dayname{
-background:#c1121f;
-color:white;
-padding:10px;
-text-align:center;
-font-weight:bold;
-}
-
-.affect{
-font-size:11px;
-margin-top:5px;
-color:#c1121f;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-}
-
-th,td{
-border:1px solid #ddd;
-padding:8px;
-}
-
-th{
-background:#c1121f;
-color:white;
-}
-
-</style>
-
-</head>
-
 <body>
 
 <header>
-
 <h1>🚒 ASTREINTE SDIS 76</h1>
-
 <p>Planification Chef de Groupe Lillebonne 2027</p>
-
 </header>
-
-<nav>
-
-<button onclick="showPage('dashboard')">
-🏠 Tableau de bord
-</button>
-
-<button onclick="showPage('agents')">
-👨‍🚒 Agents
-</button>
-
-<button onclick="showPage('planning')">
-📅 Planning
-</button>
-
-<button onclick="showPage('stats')">
-📊 Statistiques
-</button>
-
-</nav>
 
 <div class="container">
 
-<div id="dashboard" class="page active">
+<div class="card">
 
-<div class="stats">
+<h2>Nouvelle affectation</h2>
 
-<div class="stat">
-<h3>Agents</h3>
-<h2>11</h2>
+<label>Agent</label>
+
+<select id="agent">
+<option>Agent 1</option>
+<option>Agent 2</option>
+<option>Agent 3</option>
+<option>Agent 4</option>
+<option>Agent 5</option>
+<option>Agent 6</option>
+<option>Agent 7</option>
+<option>Agent 8</option>
+<option>Agent 9</option>
+<option>Agent 10</option>
+<option>Agent 11</option>
+</select>
+
+<br><br>
+
+<label>Type d'astreinte</label>
+
+<select id="type" onchange="majType()">
+<option>Nuit</option>
+<option>Week-end</option>
+<option>Jour férié</option>
+<option>Semaine complète</option>
+<option>Personnalisée</option>
+</select>
+
+<br><br>
+
+<label>Date début</label>
+
+<input type="date" id="dateDebut">
+
+<br><br>
+
+<label>Date fin</label>
+
+<input type="date" id="dateFin">
+
+<div id="blocHoraire" style="display:none">
+
+<br>
+
+<label>Heure début</label>
+
+<input type="time" id="heureDebut">
+
+<br><br>
+
+<label>Heure fin</label>
+
+<input type="time" id="heureFin">
+
 </div>
 
-<div class="stat">
-<h3>Profils 7 semaines</h3>
-<h2>3</h2>
-</div>
+<br>
 
-<div class="stat">
-<h3>Profil 4 semaines</h3>
-<h2>1</h2>
-</div>
+<label>Commentaire</label>
 
-<div class="stat">
-<h3>Nuits/WE/Fériés</h3>
-<h2>7</h2>
-</div>
+<br>
+
+<textarea
+id="commentaire"
+rows="4"
+style="width:100%">
+</textarea>
+
+<br><br>
+
+<button onclick="enregistrer()">
+Enregistrer
+</button>
 
 </div>
 
 <div class="card">
 
-<h2>Organisation</h2>
+<h2>Affectations enregistrées</h2>
 
-<ul>
-<li>3 agents minimum 7 semaines</li>
-<li>1 agent minimum 4 semaines</li>
-<li>7 agents dédiés nuits / week-end / fériés</li>
-</ul>
+<div id="liste">
 
-</div>
-
-</div>
-
-<div id="agents" class="page">
-
-<div class="card">
-
-<h2>Liste des agents</h2>
-
-<table>
-
-<tr>
-<th>Agent</th>
-<th>Profil</th>
-</tr>
-
-<tr><td>Agent 1</td><td>Minimum 7 semaines</td></tr>
-<tr><td>Agent 2</td><td>Minimum 7 semaines</td></tr>
-<tr><td>Agent 3</td><td>Minimum 7 semaines</td></tr>
-<tr><td>Agent 4</td><td>Minimum 4 semaines</td></tr>
-<tr><td>Agent 5</td><td>Nuit / WE / Férié</td></tr>
-<tr><td>Agent 6</td><td>Nuit / WE / Férié</td></tr>
-<tr><td>Agent 7</td><td>Nuit / WE / Férié</td></tr>
-<tr><td>Agent 8</td><td>Nuit / WE / Férié</td></tr>
-<tr><td>Agent 9</td><td>Nuit / WE / Férié</td></tr>
-<tr><td>Agent 10</td><td>Nuit / WE / Férié</td></tr>
-<tr><td>Agent 11</td><td>Nuit / WE / Férié</td></tr>
-
-</table>
-
-</div>
-
-</div>
-
-<div id="planning" class="page">
-
-<div class="card">
-
-<h2>📅 Janvier 2027</h2>
-
-<div class="calendar">
-
-<div class="dayname">Lun</div>
-<div class="dayname">Mar</div>
-<div class="dayname">Mer</div>
-<div class="dayname">Jeu</div>
-<div class="dayname">Ven</div>
-<div class="dayname">Sam</div>
-<div class="dayname">Dim</div>
-
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-
-<div id="j1" class="day ferie" onclick="affecter('01/01/2027','j1')">
-<b>1</b><br>🎉
-</div>
-
-<div id="j2" class="day" onclick="affecter('02/01/2027','j2')">
-<b>2</b>
-</div>
-
-<div id="j3" class="day" onclick="affecter('03/01/2027','j3')">
-<b>3</b>
-</div>
-
-<div id="j4" class="day" onclick="affecter('04/01/2027','j4')">
-<b>4</b>
-</div>
-
-<div id="j5" class="day" onclick="affecter('05/01/2027','j5')">
-<b>5</b>
-</div>
-
-<div id="j6" class="day" onclick="affecter('06/01/2027','j6')">
-<b>6</b>
-</div>
-
-<div id="j7" class="day" onclick="affecter('07/01/2027','j7')">
-<b>7</b>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div id="stats" class="page">
-
-<div class="card">
-
-<h2>📊 Statistiques</h2>
-
-<p id="nbAffect">
-Aucune affectation enregistrée.
-</p>
+Aucune affectation
 
 </div>
 
@@ -305,78 +103,71 @@ Aucune affectation enregistrée.
 
 <script>
 
-const affectations =
-JSON.parse(
-localStorage.getItem("astreintes")
-) || {};
+function majType(){
 
-function showPage(page){
+let type =
+document.getElementById("type").value;
 
-document
-.querySelectorAll(".page")
-.forEach(p=>{
-p.classList.remove("active");
-});
+let bloc =
+document.getElementById("blocHoraire");
 
-document
-.getElementById(page)
-.classList.add("active");
+if(type==="Personnalisée"){
+
+bloc.style.display="block";
+
+}else{
+
+bloc.style.display="none";
 
 }
 
-function affecter(date,id){
-
-const agent = prompt(
-"Agent ?\n\nExemple : Agent 1"
-);
-
-if(!agent){
-return;
 }
 
-const type = prompt(
-"Type ?\n\nNuit\nWeek-end\nJour férié\nSemaine complète\nPersonnalisée"
-);
+function enregistrer(){
 
-if(!type){
-return;
-}
+let data={
 
-affectations[date]={
-agent:agent,
-type:type
+agent:
+document.getElementById("agent").value,
+
+type:
+document.getElementById("type").value,
+
+dateDebut:
+document.getElementById("dateDebut").value,
+
+dateFin:
+document.getElementById("dateFin").value,
+
+heureDebut:
+document.getElementById("heureDebut").value,
+
+heureFin:
+document.getElementById("heureFin").value,
+
+commentaire:
+document.getElementById("commentaire").value
+
 };
 
 localStorage.setItem(
-"astreintes",
-JSON.stringify(affectations)
+"derniereAffectation",
+JSON.stringify(data)
 );
 
-document.getElementById(id).innerHTML=
-"<b>"+date.split('/')[0]+"</b><div class='affect'>"+
-agent+
-"<br>"+
-type+
-"</div>";
+document.getElementById("liste")
+.innerHTML=
 
-majStats();
+"<b>Agent :</b> "+data.agent+"<br>"+
+"<b>Type :</b> "+data.type+"<br>"+
+"<b>Début :</b> "+data.dateDebut+"<br>"+
+"<b>Fin :</b> "+data.dateFin+"<br>"+
+"<b>Commentaire :</b> "+data.commentaire;
 
-}
-
-function majStats(){
-
-const nb =
-Object.keys(affectations).length;
-
-document.getElementById("nbAffect")
-.innerHTML =
-"Affectations enregistrées : <b>"+nb+"</b>";
+alert("Affectation enregistrée");
 
 }
-
-majStats();
 
 </script>
 
 </body>
-</html>
