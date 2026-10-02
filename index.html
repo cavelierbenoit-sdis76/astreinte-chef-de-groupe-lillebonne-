@@ -184,45 +184,66 @@ border-radius:5px;
 
 <div class="card">
 
-<h2>Planning</h2>
+<h2>📅 Janvier 2027</h2>
 
-<p>Calendrier interactif à venir en V2.2</p>
+<div style="
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:5px;
+">
+
+<div style="background:#c1121f;color:white;padding:10px;text-align:center;">Lun</div>
+<div style="background:#c1121f;color:white;padding:10px;text-align:center;">Mar</div>
+<div style="background:#c1121f;color:white;padding:10px;text-align:center;">Mer</div>
+<div style="background:#c1121f;color:white;padding:10px;text-align:center;">Jeu</div>
+<div style="background:#c1121f;color:white;padding:10px;text-align:center;">Ven</div>
+<div style="background:#c1121f;color:white;padding:10px;text-align:center;">Sam</div>
+<div style="background:#c1121f;color:white;padding:10px;text-align:center;">Dim</div>
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+<div onclick="affecter('01/01/2027')"
+style="background:#ffe082;padding:10px;height:80px;cursor:pointer;border-radius:5px;">
+<b>1</b><br>
+🎉 Jour de l'An
+</div>
+
+<div onclick="affecter('02/01/2027')"
+style="background:#f5f5f5;padding:10px;height:80px;cursor:pointer;border-radius:5px;">
+2
+</div>
+
+<div onclick="affecter('03/01/2027')"
+style="background:#f5f5f5;padding:10px;height:80px;cursor:pointer;border-radius:5px;">
+3
+</div>
+
+<div onclick="affecter('04/01/2027')"
+style="background:white;padding:10px;height:80px;cursor:pointer;border-radius:5px;border:1px solid #ddd;">4</div>
+
+<div onclick="affecter('05/01/2027')"
+style="background:white;padding:10px;height:80px;cursor:pointer;border-radius:5px;border:1px solid #ddd;">5</div>
+
+<div onclick="affecter('06/01/2027')"
+style="background:white;padding:10px;height:80px;cursor:pointer;border-radius:5px;border:1px solid #ddd;">6</div>
+
+<div onclick="affecter('07/01/2027')"
+style="background:white;padding:10px;height:80px;cursor:pointer;border-radius:5px;border:1px solid #ddd;">7</div>
+
+<div onclick="affecter('08/01/2027')"
+style="background:white;padding:10px;height:80px;cursor:pointer;border-radius:5px;border:1px solid #ddd;">8</div>
+
+<div onclick="affecter('09/01/2027')"
+style="background:#f5f5f5;padding:10px;height:80px;cursor:pointer;border-radius:5px;">9</div>
+
+<div onclick="affecter('10/01/2027')"
+style="background:#f5f5f5;padding:10px;height:80px;cursor:pointer;border-radius:5px;">10</div>
 
 </div>
 
 </div>
 
-<div id="stats" class="section">
-
-<div class="card">
-
-<h2>Statistiques</h2>
-
-<p>Aucune donnée enregistrée</p>
-
 </div>
-
-</div>
-
-</div>
-
-<script>
-
-function showPage(page){
-
-document
-.querySelectorAll('.section')
-.forEach(section => {
-section.classList.remove('active');
-});
-
-document
-.getElementById(page)
-.classList.add('active');
-
-}
-
-</script>
-
-</body>
-</html>
